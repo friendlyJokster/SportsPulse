@@ -1,0 +1,6 @@
+{
+  "name": "SportPulse - Multi-Sport Live Scoring & Tournament Network",
+  "description": "Real-time modular scoring engine for Cricket ball-by-ball, Kabaddi, Football, Badminton, Tournament Manager, Athlete Pro-Cards, AI Highlights, and Grassroots Sports Ecosystem.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

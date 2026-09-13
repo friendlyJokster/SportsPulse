@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .font-display {
+    font-family: 'Chakra Petch', 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  .font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.9);
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ==========================================================================
+   Light Theme System
+   ========================================================================== */
+html.light,
+.light-theme {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* 1. Structural light surfaces (Containers, cards, dialogs, dropdowns) */
+.light-theme .bg-slate-950:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: #f8fafc !important;
+}
+
+.light-theme .bg-slate-900:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: #ffffff !important;
+}
+
+.light-theme [class*="bg-slate-900/"]:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]),
+.light-theme [class*="bg-slate-950/"]:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+.light-theme .bg-slate-800:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]),
+.light-theme [class*="bg-slate-800/"]:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: #f1f5f9 !important;
+}
+
+/* Borders in light theme */
+.light-theme .border-slate-800,
+.light-theme [class*="border-slate-800/"],
+.light-theme .border-slate-700,
+.light-theme [class*="border-slate-700/"],
+.light-theme .border-slate-900 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Light theme header, navbars, modals */
+.light-theme header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme input,
+.light-theme select,
+.light-theme textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light-theme select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.light-theme .shadow-xl,
+.light-theme .shadow-2xl {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+.light-theme .bg-gradient-to-b.from-slate-900.to-slate-950 {
+  background-image: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 2. Text colors on standard LIGHT surfaces */
+.light-theme h1:not(.dark-surface *):not([class*="aspect-video"] *),
+.light-theme h2:not(.dark-surface *):not([class*="aspect-video"] *),
+.light-theme h3:not(.dark-surface *):not([class*="aspect-video"] *),
+.light-theme h4:not(.dark-surface *):not([class*="aspect-video"] *) {
+  color: #0f172a;
+}
+
+.light-theme p:not(.dark-surface *):not([class*="aspect-video"] *) {
+  color: #475569;
+}
+
+/* Elements with text-white on standard light cards should be dark */
+.light-theme .text-white:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button):not(button *):not([class*="bg-emerald-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-indigo-"]):not([class*="bg-violet-"]):not([class*="bg-amber-6"]):not([class*="bg-orange-6"]):not([class*="bg-teal-7"]):not([class*="bg-slate-700"]):not([class*="bg-slate-800"]):not([class*="rounded-full"][class*="bg-"]):not(.badge-dark):not(.badge-dark *):not([class*="bg-black"]) {
+  color: #0f172a !important;
+}
+
+.light-theme .text-slate-100:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button):not(button *):not([class*="bg-emerald-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-indigo-"]):not([class*="bg-violet-"]):not([class*="bg-amber-6"]):not([class*="bg-orange-6"]):not([class*="bg-teal-7"]):not([class*="bg-slate-700"]):not([class*="bg-slate-800"]):not([class*="rounded-full"][class*="bg-"]) {
+  color: #1e293b !important;
+}
+
+.light-theme .text-slate-200:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button):not(button *):not([class*="bg-emerald-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-indigo-"]):not([class*="bg-violet-"]):not([class*="bg-amber-6"]):not([class*="bg-orange-6"]):not([class*="bg-teal-7"]):not([class*="bg-slate-700"]):not([class*="bg-slate-800"]):not([class*="rounded-full"][class*="bg-"]) {
+  color: #1e293b !important;
+}
+
+/* ==========================================================================
+   3. CRITICAL: TEXT ON DARK BACKGROUNDS & COLORED SURFACES IN LIGHT THEME
+   Guarantees that ANY dark or saturated surface always retains crisp white or
+   bright text with maximum readability!
+   ========================================================================== */
+
+/* Buttons with colored or dark backgrounds */
+.light-theme button[class*="bg-emerald-6"],
+.light-theme button[class*="bg-emerald-6"] *,
+.light-theme button[class*="bg-purple-6"],
+.light-theme button[class*="bg-purple-6"] *,
+.light-theme button[class*="bg-rose-6"],
+.light-theme button[class*="bg-rose-6"] *,
+.light-theme button[class*="bg-blue-6"],
+.light-theme button[class*="bg-blue-6"] *,
+.light-theme button[class*="bg-blue-7"],
+.light-theme button[class*="bg-blue-7"] *,
+.light-theme button[class*="bg-blue-8"],
+.light-theme button[class*="bg-blue-8"] *,
+.light-theme button[class*="bg-blue-9"],
+.light-theme button[class*="bg-blue-9"] *,
+.light-theme button[class*="bg-indigo-6"],
+.light-theme button[class*="bg-indigo-6"] *,
+.light-theme button[class*="bg-violet-6"],
+.light-theme button[class*="bg-violet-6"] *,
+.light-theme button[class*="bg-teal-7"],
+.light-theme button[class*="bg-teal-7"] *,
+.light-theme button[class*="bg-amber-6"],
+.light-theme button[class*="bg-amber-6"] *,
+.light-theme button[class*="bg-orange-6"],
+.light-theme button[class*="bg-orange-6"] *,
+.light-theme button[class*="bg-slate-700"],
+.light-theme button[class*="bg-slate-700"] *,
+.light-theme button[class*="bg-slate-800"].text-white,
+.light-theme button[class*="bg-slate-800"].text-slate-200,
+.light-theme button[class*="bg-slate-900"].text-white,
+.light-theme button[class*="bg-slate-900"].text-slate-200 {
+  color: #ffffff !important;
+}
+
+/* Over Ball Badges (Cricket Circles: 4, 6, W, Wd, Nb, 1, 2, 3) */
+.light-theme [class*="rounded-full"][class*="bg-emerald-6"],
+.light-theme [class*="rounded-full"][class*="bg-purple-6"],
+.light-theme [class*="rounded-full"][class*="bg-rose-6"],
+.light-theme [class*="rounded-full"][class*="bg-amber-6"],
+.light-theme [class*="rounded-full"][class*="bg-blue-6"],
+.light-theme [class*="rounded-full"][class*="bg-blue-9"],
+.light-theme [class*="rounded-full"][class*="bg-blue-8"],
+.light-theme [class*="rounded-full"][class*="bg-blue-7"] {
+  color: #ffffff !important;
+}
+
+/* Fast Mobile Cricket Keypad Buttons */
+.light-theme #btn-fast-ball-6,
+.light-theme #btn-fast-ball-w,
+.light-theme #btn-fast-ball-4,
+.light-theme #btn-fast-ball-1,
+.light-theme #btn-fast-ball-2,
+.light-theme #btn-fast-ball-3,
+.light-theme #btn-fast-ball-wd,
+.light-theme #btn-fast-ball-nb {
+  color: #ffffff !important;
+}
+
+/* Video Canvas & Live Broadcast Overlay HUD in AIHighlightStudio */
+.light-theme [class*="aspect-video"],
+.light-theme .video-canvas {
+  background-color: #0b0f19 !important;
+  background-image: linear-gradient(to bottom right, #020617, #0f172a, #020617) !important;
+}
+
+.light-theme [class*="aspect-video"] .text-white,
+.light-theme [class*="aspect-video"] h2,
+.light-theme [class*="aspect-video"] h3,
+.light-theme [class*="aspect-video"] h4,
+.light-theme [class*="aspect-video"] [class*="text-white"],
+.light-theme .video-canvas .text-white {
+  color: #ffffff !important;
+}
+
+.light-theme [class*="aspect-video"] .text-slate-200,
+.light-theme [class*="aspect-video"] .text-slate-300,
+.light-theme .video-canvas .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+.light-theme [class*="aspect-video"] .text-slate-400,
+.light-theme .video-canvas .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+.light-theme [class*="aspect-video"] .text-emerald-400,
+.light-theme .video-canvas .text-emerald-400 {
+  color: #34d399 !important;
+}
+
+.light-theme [class*="aspect-video"] .text-rose-400,
+.light-theme .video-canvas .text-rose-400 {
+  color: #fb7185 !important;
+}
+
+.light-theme [class*="aspect-video"] .text-amber-400,
+.light-theme .video-canvas .text-amber-400 {
+  color: #fbbf24 !important;
+}
+
+.light-theme [class*="aspect-video"] [class*="bg-slate-950"],
+.light-theme [class*="aspect-video"] [class*="bg-slate-900"],
+.light-theme [class*="aspect-video"] [class*="bg-black"],
+.light-theme .video-canvas [class*="bg-slate-950"],
+.light-theme .video-canvas [class*="bg-slate-900"] {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+/* Explicit Dark Surfaces (.dark-surface class for any preserved dark block) */
+.light-theme .dark-surface {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+.light-theme .dark-surface .text-white,
+.light-theme .dark-surface h1,
+.light-theme .dark-surface h2,
+.light-theme .dark-surface h3,
+.light-theme .dark-surface h4,
+.light-theme .dark-surface h5,
+.light-theme .dark-surface p,
+.light-theme .dark-surface span {
+  color: #f8fafc !important;
+}
+
+.light-theme .dark-surface .text-emerald-400 {
+  color: #34d399 !important;
+}
+.light-theme .dark-surface .text-amber-400 {
+  color: #fbbf24 !important;
+}
+.light-theme .dark-surface .text-rose-400 {
+  color: #fb7185 !important;
+}
+
+/* Floating AI Highlight Notification Toast */
+.light-theme #toast-highlight-banner,
+.light-theme .floating-toast {
+  background-color: rgba(15, 23, 42, 0.96) !important;
+  border-color: rgba(16, 185, 129, 0.6) !important;
+}
+.light-theme #toast-highlight-banner h4,
+.light-theme .floating-toast h4 {
+  color: #ffffff !important;
+}
+.light-theme #toast-highlight-banner p,
+.light-theme .floating-toast p {
+  color: #cbd5e1 !important;
+}
+
+/* Mobile Sticky Score Header in light theme */
+.light-theme #mobile-sticky-score {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+}
+.light-theme #mobile-sticky-score .text-white {
+  color: #0f172a !important;
+}
+
+/* Mobile Bottom Navigation in light theme */
+.light-theme #mobile-bottom-bar {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+.light-theme #mobile-bottom-bar .text-slate-400 {
+  color: #64748b !important;
+}
+.light-theme #mobile-bottom-bar button:hover .text-slate-400,
+.light-theme #mobile-bottom-bar button:hover .text-slate-200 {
+  color: #0f172a !important;
+}
+
+/* Scrollbars in light theme */
+.light-theme ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.9);
+}
