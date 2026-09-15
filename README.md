@@ -240,8 +240,8 @@ Analyzes locker room and community comments for sportsmanlike language.
 
 ### 2. Installation
 ```bash
-git clone <repository-url>
-cd sportpulse
+git clone https://github.com/friendlyJokster/SportsPulse.git
+cd SportsPulse
 npm install
 ```
 
