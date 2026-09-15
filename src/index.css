@@ -1,0 +1,536 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   Centralized Design Token System - SportPulse
+   ========================================================================== */
+:root {
+  /* Spacing Tokens */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+
+  /* Typography Scale */
+  --font-h1: clamp(1.4rem, 3.5vw, 1.875rem);
+  --font-h2: clamp(1.2rem, 2.8vw, 1.5rem);
+  --font-h3: clamp(1.05rem, 2.2vw, 1.25rem);
+  --font-body-lg: 1.125rem;
+  --font-body-md: 1rem;
+  --font-body-sm: 0.875rem;
+  --font-caption: 0.75rem;
+
+  /* Default Light Theme (Sapphire) */
+  --color-background: #f5f8fc;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #edf2f9;
+
+  --color-surface-card: #ffffff;
+  --color-surface-card-hover: #f8fafc;
+  --color-surface-modal: #ffffff;
+  --color-surface-popover: #ffffff;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
+
+  --color-border-primary: #e2e8f0;
+  --color-border-secondary: #cbd5e1;
+
+  --color-status-success: #10b981;
+  --color-status-warning: #f59e0b;
+  --color-status-error: #ef4444;
+  --color-status-info: #2563eb;
+
+  --color-sport-boundary: #059669;
+  --color-sport-wicket: #e11d48;
+  --color-sport-goal: #2563eb;
+  --color-sport-super-raid: #ea580c;
+  --color-sport-game-point: #7c3aed;
+}
+
+/* Dark Mode Tokens (Default dark & slate-dark) */
+.dark,
+html.dark {
+  --color-background: #090d16;
+  --color-background-secondary: #0f172a;
+  --color-background-tertiary: #1e293b;
+
+  --color-surface-card: #0f172a;
+  --color-surface-card-hover: #172033;
+  --color-surface-modal: #0f172a;
+  --color-surface-popover: #131d31;
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+
+  --color-border-primary: #1e293b;
+  --color-border-secondary: #334155;
+
+  --color-status-success: #34d399;
+  --color-status-warning: #fbbf24;
+  --color-status-error: #f87171;
+  --color-status-info: #60a5fa;
+
+  --color-sport-boundary: #34d399;
+  --color-sport-wicket: #f87171;
+  --color-sport-goal: #60a5fa;
+  --color-sport-super-raid: #fb923c;
+  --color-sport-game-point: #a78bfa;
+}
+
+/* Warm Sand & Terracotta - Light */
+html.terracotta,
+.terracotta {
+  --color-background: #f8f5ee;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #f0eae0;
+  --color-surface-card: #ffffff;
+  --color-surface-card-hover: #faf7f2;
+  --color-surface-modal: #ffffff;
+  --color-surface-popover: #ffffff;
+  --color-text-primary: #2c2522;
+  --color-text-secondary: #574b45;
+  --color-text-muted: #7d6e66;
+  --color-text-inverse: #ffffff;
+  --color-border-primary: #e7dfd2;
+  --color-border-secondary: #dcd2bf;
+  --color-status-info: #c85a32;
+}
+
+/* Calm Warm Paper - Light */
+html.calm,
+.calm {
+  --color-background: #fbf8f3;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #f4eee2;
+  --color-surface-card: #ffffff;
+  --color-surface-card-hover: #f9f5ed;
+  --color-surface-modal: #ffffff;
+  --color-surface-popover: #ffffff;
+  --color-text-primary: #2d2926;
+  --color-text-secondary: #5c554e;
+  --color-text-muted: #7a726a;
+  --color-text-inverse: #ffffff;
+  --color-border-primary: #e6dece;
+  --color-border-secondary: #dcd2bf;
+}
+
+/* Amethyst & Lavender - Light */
+html.amethyst,
+.amethyst {
+  --color-background: #f9f8fd;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #f0eef9;
+  --color-surface-card: #ffffff;
+  --color-surface-card-hover: #f3f0fc;
+  --color-surface-modal: #ffffff;
+  --color-surface-popover: #ffffff;
+  --color-text-primary: #1e1b4b;
+  --color-text-secondary: #4338ca;
+  --color-text-muted: #6b7280;
+  --color-text-inverse: #ffffff;
+  --color-border-primary: #e4e2f2;
+  --color-border-secondary: #c7d2fe;
+}
+
+/* Nordic Slate & Sky - Dark */
+html.nordic,
+.nordic {
+  --color-background: #151d2a;
+  --color-background-secondary: #1d283a;
+  --color-background-tertiary: #25334a;
+  --color-surface-card: #1d283a;
+  --color-surface-card-hover: #25334a;
+  --color-surface-modal: #1d283a;
+  --color-surface-popover: #25334a;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+  --color-border-primary: #2b3b52;
+  --color-border-secondary: #3b506e;
+}
+
+/* Nord Theme - Dark */
+html.nord,
+.nord {
+  --color-background: #171e28;
+  --color-background-secondary: #1f2937;
+  --color-background-tertiary: #273444;
+  --color-surface-card: #1f2937;
+  --color-surface-card-hover: #273444;
+  --color-surface-modal: #1f2937;
+  --color-surface-popover: #273444;
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+  --color-border-primary: #2e3d52;
+  --color-border-secondary: #3d4f68;
+}
+
+/* OLED Stealth - Dark */
+html.oled,
+.oled {
+  --color-background: #000000;
+  --color-background-secondary: #090909;
+  --color-background-tertiary: #141414;
+  --color-surface-card: #090909;
+  --color-surface-card-hover: #141414;
+  --color-surface-modal: #090909;
+  --color-surface-popover: #141414;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e5e5;
+  --color-text-muted: #a3a3a3;
+  --color-text-inverse: #000000;
+  --color-border-primary: #222222;
+  --color-border-secondary: #333333;
+}
+
+@layer base {
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    min-height: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .font-display {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.015em;
+  }
+  
+  .font-mono-code {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Accessible form elements with mobile-first tap targets & prevention of iOS zoom */
+  input, select, textarea {
+    font-size: 16px;
+    background-color: var(--color-surface-card);
+    color: var(--color-text-primary);
+    border-color: var(--color-border-primary);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  button, [role="button"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+/* ==========================================================================
+   Semantic Theme Utility Classes
+   ========================================================================== */
+.bg-theme-bg { background-color: var(--color-background) !important; }
+.bg-theme-bg-secondary { background-color: var(--color-background-secondary) !important; }
+.bg-theme-bg-tertiary { background-color: var(--color-background-tertiary) !important; }
+
+.bg-theme-card { background-color: var(--color-surface-card) !important; }
+.hover\:bg-theme-card-hover:hover { background-color: var(--color-surface-card-hover) !important; }
+.bg-theme-modal { background-color: var(--color-surface-modal) !important; }
+.bg-theme-popover { background-color: var(--color-surface-popover) !important; }
+
+.text-theme-primary { color: var(--color-text-primary) !important; }
+.text-theme-secondary { color: var(--color-text-secondary) !important; }
+.text-theme-muted { color: var(--color-text-muted) !important; }
+.text-theme-inverse { color: var(--color-text-inverse) !important; }
+
+.border-theme-primary { border-color: var(--color-border-primary) !important; }
+.border-theme-secondary { border-color: var(--color-border-secondary) !important; }
+
+/* Status Tokens */
+.text-theme-success { color: var(--color-status-success) !important; }
+.bg-theme-success { background-color: var(--color-status-success) !important; }
+.border-theme-success { border-color: var(--color-status-success) !important; }
+
+.text-theme-warning { color: var(--color-status-warning) !important; }
+.bg-theme-warning { background-color: var(--color-status-warning) !important; }
+.border-theme-warning { border-color: var(--color-status-warning) !important; }
+
+.text-theme-error { color: var(--color-status-error) !important; }
+.bg-theme-error { background-color: var(--color-status-error) !important; }
+.border-theme-error { border-color: var(--color-status-error) !important; }
+
+.text-theme-info { color: var(--color-status-info) !important; }
+.bg-theme-info { background-color: var(--color-status-info) !important; }
+.border-theme-info { border-color: var(--color-status-info) !important; }
+
+/* Sports Event Tokens */
+.text-sport-boundary { color: var(--color-sport-boundary) !important; }
+.bg-sport-boundary { background-color: var(--color-sport-boundary) !important; }
+.border-sport-boundary { border-color: var(--color-sport-boundary) !important; }
+
+.text-sport-wicket { color: var(--color-sport-wicket) !important; }
+.bg-sport-wicket { background-color: var(--color-sport-wicket) !important; }
+.border-sport-wicket { border-color: var(--color-sport-wicket) !important; }
+
+.text-sport-goal { color: var(--color-sport-goal) !important; }
+.bg-sport-goal { background-color: var(--color-sport-goal) !important; }
+.border-sport-goal { border-color: var(--color-sport-goal) !important; }
+
+.text-sport-super-raid { color: var(--color-sport-super-raid) !important; }
+.bg-sport-super-raid { background-color: var(--color-sport-super-raid) !important; }
+.border-sport-super-raid { border-color: var(--color-sport-super-raid) !important; }
+
+.text-sport-game-point { color: var(--color-sport-game-point) !important; }
+.bg-sport-game-point { background-color: var(--color-sport-game-point) !important; }
+.border-sport-game-point { border-color: var(--color-sport-game-point) !important; }
+
+/* ==========================================================================
+   Typography Hierarchy Tokens
+   ========================================================================== */
+.text-h1 {
+  font-size: var(--font-h1);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+.text-h2 {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.text-h3 {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+}
+
+.text-body-lg {
+  font-size: var(--font-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.text-body-md {
+  font-size: var(--font-body-md);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.text-body-sm {
+  font-size: var(--font-body-sm);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.text-caption-muted {
+  font-size: var(--font-caption);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Spacing System Tokens
+   ========================================================================== */
+.p-token-xs { padding: var(--space-xs); }
+.p-token-sm { padding: var(--space-sm); }
+.p-token-md { padding: var(--space-md); }
+.p-token-lg { padding: var(--space-lg); }
+.p-token-xl { padding: var(--space-xl); }
+
+.gap-token-xs { gap: var(--space-xs); }
+.gap-token-sm { gap: var(--space-sm); }
+.gap-token-md { gap: var(--space-md); }
+.gap-token-lg { gap: var(--space-lg); }
+.gap-token-xl { gap: var(--space-xl); }
+
+/* ==========================================================================
+   Theme Synchronization Mappings (Non-breaking for all UI components)
+   ========================================================================== */
+/* Light Mode Universal Fallbacks */
+html:not(.dark) .bg-slate-900:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-blue"]):not(button[class*="bg-emerald"]):not(button[class*="bg-rose"]):not(button[class*="bg-purple"]):not(button[class*="bg-amber"]),
+html:not(.dark) .bg-slate-950:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-blue"]):not(button[class*="bg-emerald"]):not(button[class*="bg-rose"]):not(button[class*="bg-purple"]):not(button[class*="bg-amber"]),
+html:not(.dark) [class*="bg-slate-900/"]:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]),
+html:not(.dark) [class*="bg-slate-950/"]:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: var(--color-surface-card) !important;
+}
+
+html:not(.dark) .bg-slate-800:not(.dark-surface):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button[class*="bg-"]):not([class*="rounded-full"][class*="bg-"]) {
+  background-color: var(--color-background-tertiary) !important;
+}
+
+html:not(.dark) .border-slate-800,
+html:not(.dark) [class*="border-slate-800/"],
+html:not(.dark) .border-slate-700,
+html:not(.dark) [class*="border-slate-700/"],
+html:not(.dark) .border-slate-900 {
+  border-color: var(--color-border-primary) !important;
+}
+
+html:not(.dark) h1:not(.dark-surface *):not([class*="aspect-video"] *),
+html:not(.dark) h2:not(.dark-surface *):not([class*="aspect-video"] *),
+html:not(.dark) h3:not(.dark-surface *):not([class*="aspect-video"] *),
+html:not(.dark) h4:not(.dark-surface *):not([class*="aspect-video"] *) {
+  color: var(--color-text-primary);
+}
+
+html:not(.dark) p:not(.dark-surface *):not([class*="aspect-video"] *) {
+  color: var(--color-text-secondary);
+}
+
+html:not(.dark) .text-white:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button):not(button *):not([class*="bg-emerald-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-indigo-"]):not([class*="bg-violet-"]):not([class*="bg-amber-"]):not([class*="bg-orange-"]):not([class*="bg-teal-"]):not([class*="rounded-full"][class*="bg-"]) {
+  color: var(--color-text-primary) !important;
+}
+
+html:not(.dark) .text-slate-100:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button *),
+html:not(.dark) .text-slate-200:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button *),
+html:not(.dark) .text-slate-300:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button *) {
+  color: var(--color-text-secondary) !important;
+}
+
+html:not(.dark) .text-slate-400:not(.dark-surface):not(.dark-surface *):not([class*="aspect-video"]):not([class*="aspect-video"] *):not(button *) {
+  color: var(--color-text-muted) !important;
+}
+
+/* Dark Mode Universal Fallbacks */
+html.dark .bg-white:not(.light-surface):not([class*="aspect-video"]):not(button[class*="bg-"]) {
+  background-color: var(--color-surface-card) !important;
+}
+
+html.dark .text-slate-900:not(.light-surface *) {
+  color: var(--color-text-primary) !important;
+}
+
+html.dark .text-slate-800:not(.light-surface *) {
+  color: var(--color-text-secondary) !important;
+}
+
+html.dark .border-slate-200:not(.light-surface) {
+  border-color: var(--color-border-primary) !important;
+}
+
+/* Mobile Cricket Fast Keypad Buttons in Light Theme */
+html:not(.dark) #btn-fast-ball-0 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+}
+html:not(.dark) #btn-fast-ball-1,
+html:not(.dark) #btn-fast-ball-2,
+html:not(.dark) #btn-fast-ball-3 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1d4ed8 !important;
+  box-shadow: none !important;
+}
+html:not(.dark) #btn-fast-ball-4 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #047857 !important;
+  box-shadow: none !important;
+}
+html:not(.dark) #btn-fast-ball-6 {
+  background-color: #f5f3ff !important;
+  border-color: #ddd6fe !important;
+  color: #6d28d9 !important;
+  box-shadow: none !important;
+}
+html:not(.dark) #btn-fast-ball-w {
+  background-color: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+  color: #be123c !important;
+  box-shadow: none !important;
+}
+html:not(.dark) #btn-fast-ball-wd,
+html:not(.dark) #btn-fast-ball-nb {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+  box-shadow: none !important;
+}
+
+/* Buttons with white background in light theme */
+html:not(.dark) button.bg-white,
+html:not(.dark) button.bg-white * {
+  color: var(--color-text-primary) !important;
+}
+
+/* Over Ball Badges (Cricket Circles: 4, 6, W, etc.) */
+[class*="rounded-full"][class*="bg-emerald-6"],
+[class*="rounded-full"][class*="bg-purple-6"],
+[class*="rounded-full"][class*="bg-rose-6"],
+[class*="rounded-full"][class*="bg-amber-6"],
+[class*="rounded-full"][class*="bg-blue-6"],
+[class*="rounded-full"][class*="bg-blue-7"],
+[class*="rounded-full"][class*="bg-blue-8"] {
+  color: #ffffff !important;
+}
+
+/* AI Highlight Studio Video Canvas & Overlay HUD */
+.video-canvas,
+[class*="aspect-video"] {
+  background-color: #0b0f19 !important;
+  background-image: linear-gradient(to bottom right, #020617, #0f172a, #020617) !important;
+}
+
+.video-canvas .text-white,
+[class*="aspect-video"] .text-white,
+[class*="aspect-video"] h2,
+[class*="aspect-video"] h3 {
+  color: #ffffff !important;
+}
+
+/* Safe Area Insets for Mobile */
+.pb-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Mobile Active Button Tap Feedback */
+.mobile-touch-btn:active {
+  transform: scale(0.96);
+  transition: transform 0.08s ease-out;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Dynamic Fonts */
+html[data-font="plus-jakarta"], body[data-font="plus-jakarta"] {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+html[data-font="lexend"], body[data-font="lexend"] {
+  font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+html[data-font="outfit"], body[data-font="outfit"] {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+html[data-font="manrope"], body[data-font="manrope"] {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+html[data-font="space-grotesk"], body[data-font="space-grotesk"] {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}

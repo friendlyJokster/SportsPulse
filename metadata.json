@@ -1,0 +1,12 @@
+{
+  "name": "Remix SportPulse - Multi-Sport Live Scoring \u0026 Tournament Network",
+  "description": "v1.0.0 mobile-first live scoring app with automated AI highlights, offline queueing, Firebase Auth (Google + Apple), FCM push notifications, Analytics, and Crashlytics.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
