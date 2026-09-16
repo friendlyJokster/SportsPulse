@@ -19,7 +19,7 @@ SportPulse delivers a CricHeroes-grade live scoring experience across 6 major gr
   - Replaced cramped mobile chip carousels with airy, well-padded cards, balanced negative space, and generous 44px+ touch targets.
 - **Dynamic Typography Engine**: 5 selectable Google Fonts (**Plus Jakarta Sans** [default], **Lexend** [anti-strain], **Outfit**, **Manrope**, and **Space Grotesk**) configurable on-the-fly from the User Preferences menu.
 - **User Preferences Modal**: Accessible from the top navbar and athlete profile for selecting themes, switching fonts, toggling tactile haptic feedback with a live test trigger, and setting sound preferences.
-- **Mobile Device & Android App Readiness**: Complete Capacitor integration, horizontal swipe gestures (`useSwipeNavigation`) between tabs, offline scoring queue with automatic background sync, and edge-to-edge safe area navigation.
+- **Mobile Device & Native App Readiness (Android & iOS)**: Complete Capacitor integration, horizontal swipe gestures (`useSwipeNavigation`) between tabs, offline scoring queue with automatic background sync, and edge-to-edge safe area navigation.
 
 ---
 
@@ -86,7 +86,7 @@ The new **User Preferences** modal can be opened from:
 ## 📱 Mobile Device & App Readiness
 
 ### Is this ready to run on mobile devices as a native app?
-**Yes.** SportPulse is fully optimized for mobile devices both as a Progressive Web App (PWA) and as a compiled native Android app via Capacitor.
+**Yes.** SportPulse is fully optimized for mobile devices as a Progressive Web App (PWA) and as compiled native Android & iOS apps via Capacitor.
 
 ### Mobile-Ready Architectural Features:
 1. **Horizontal Swipe-to-Navigate Gestures**:
@@ -335,15 +335,15 @@ Support 6 sports with distinct scoring rules and dynamic scoreboards:
 
 ---
 
-## 📱 Android Native Experience (Capacitor Integration)
+## 📱 Mobile Native Experience (Android & iOS Integration)
 
-SportPulse has been upgraded into a mobile-first Android application designed for field-side scorers, umpires, and tournament broadcasters.
+SportPulse has been upgraded into a mobile-first Android and iOS application designed for field-side scorers, umpires, and tournament broadcasters.
 
-### 🌟 Native Android Features Implemented:
+### 🌟 Native Mobile Features Implemented:
 1. **Ergonomic Bottom Navigation (`MobileBottomNav.tsx`)**:
    - 5 primary touch destinations: **Home**, **Matches**, **Live Score**, **AI Clips**, and **Stats**.
    - Floating quick-action center button with haptic feedback for instant match/tournament creation.
-   - Safe-area inset support (`env(safe-area-inset-bottom)`) for edge-to-edge Android 12+ navigation bars.
+   - Safe-area inset support (`env(safe-area-inset-bottom)`) for edge-to-edge Android 12+ and iOS Home Indicator bars.
 
 2. **Native Hardware Haptics**:
    - Single-tap feedback (`ImpactStyle.Light`) on every run scored, ball delivered, and strike rotated.
@@ -354,12 +354,12 @@ SportPulse has been upgraded into a mobile-first Android application designed fo
    - When scorers lose internet connection at remote grounds, all score changes and ball events are queued locally via Capacitor Preferences / durable storage (`sportpulse_offline_scoring_queue_v1`).
    - The app automatically detects connectivity restoration and synchronizes the scoring queue to the backend.
 
-4. **Android Native Push / Local Notifications**:
-   - Triggers native Android notifications on landmark events (centuries, hat-tricks, match finishes).
+4. **Native Mobile Push / Local Notifications**:
+   - Triggers native Android & iOS notifications on landmark events (centuries, hat-tricks, match finishes).
 
 5. **AI Highlight Reel Mode (9:16 Portrait) & Native Sharing**:
    - Portrait 9:16 canvas preview optimized for mobile devices.
-   - Native Android Share Sheet integration for sharing highlights directly to **WhatsApp**, **Instagram Reels**, and other social platforms.
+   - Native iOS & Android Share Sheet integration for sharing highlights directly to **WhatsApp**, **Instagram Reels**, and other social platforms.
    - Double-tap seek gestures (rewind / fast-forward 5 seconds).
 
 6. **Broadcast Presentation Mode (`BroadcastModeModal.tsx`)**:
@@ -387,5 +387,42 @@ npx cap open android
 cd android && ./gradlew assembleDebug
 # Output: android/app/build/outputs/apk/debug/app-debug.apk
 ```
+
+### 🍎 iOS App & App Store Build Steps
+
+#### Prerequisites (iOS Development):
+- **macOS** (Required for building iOS apps with Xcode)
+- **Xcode 15+** installed via Mac App Store
+- **CocoaPods** installed (`sudo gem install cocoapods` or `brew install cocoapods`)
+- **Apple Developer Account** (Required for device testing, TestFlight, and App Store submission)
+
+#### Build Steps:
+
+```bash
+# 1. Install Capacitor iOS dependencies
+npm install @capacitor/ios
+
+# 2. Build the production web bundle
+npm run build
+
+# 3. Add iOS platform (first-time only)
+npx cap add ios
+
+# 4. Sync web assets and plugins to iOS project
+npx cap sync ios
+
+# 5. Open in Xcode
+npx cap open ios
+
+# 6. Build Debug binary via CLI (macOS with Xcode Command Line Tools)
+xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug -sdk iphonesimulator
+# Output: ios/App/build/Release-iphonesimulator/App.app
+```
+
+#### Xcode Archiving & App Store / TestFlight Deployment:
+1. In Xcode, select the root **App** project and select your **Signing Team** under *Signing & Capabilities*.
+2. Select target device **Any iOS Device (arm64)** from the top device toolbar.
+3. Go to **Product > Archive**.
+4. Once the archive completes, click **Distribute App** in the Organizer window to upload to **TestFlight** or export an **IPA** file.
 
 
